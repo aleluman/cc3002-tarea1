@@ -9,7 +9,7 @@ public class Trainer implements ITrainer {
     private List<ICard> deck;
     private List<ICard> hand;
     private List<IPokemon> benchPokemon;
-    private ICard activePokemon;
+    private IPokemon activePokemon;
 
     protected Trainer(String name, List<ICard> deck) {
         this.name = name;
@@ -23,26 +23,30 @@ public class Trainer implements ITrainer {
 
     @Override
     public void drawCard() {
+        this.hand.add(this.deck.get(this.deck.size() - 1));
+        this.hand.remove(this.deck.size() - 1);
+    }
+
+    @Override
+    public void playCard(ICard card) {
+        card.playEffect();
 
     }
 
     @Override
-    public void playCard() {
+    public void selectActivePokemon(IPokemon pokemon) {
+        this.benchPokemon.add(this.activePokemon);
+        this.activePokemon = pokemon;
+        this.benchPokemon.remove(pokemon);
+    }
+
+    @Override
+    public void addPokemonToBench(IPokemon pokemon) {
 
     }
 
     @Override
-    public void selectActivePokemon() {
-
-    }
-
-    @Override
-    public void addPokemonToBench() {
-
-    }
-
-    @Override
-    public void selectAttack() {
-
+    public void selectAttack(IPokemon pokemon) {
+        pokemon.getSelectedAttack();
     }
 }
