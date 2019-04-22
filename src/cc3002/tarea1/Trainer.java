@@ -1,6 +1,7 @@
 package cc3002.tarea1;
 
-import java.util.ArrayList;
+import cc3002.tarea1.Pokemon.IPokemon;
+
 import java.util.List;
 
 public class Trainer implements ITrainer {
@@ -14,7 +15,6 @@ public class Trainer implements ITrainer {
         this.name = name;
         this.deck = deck;
     }
-
 
     @Override
     public void seeHandCards() {
