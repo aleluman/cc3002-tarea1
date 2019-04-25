@@ -1,10 +1,11 @@
-package cc3002.tarea1.Attacks;
+package cc3002.tarea1;
 
-import cc3002.tarea1.Pokemon.IPokemon;
+import cc3002.tarea1.IAttack;
+import cc3002.tarea1.IPokemon;
 
 import java.util.List;
 
-public class AbstractAttack implements IAttack {
+public abstract class AbstractAttack implements IAttack {
     private int damage;
     private String name;
     private List<String> energies;

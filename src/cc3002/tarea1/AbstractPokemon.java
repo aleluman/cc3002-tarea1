@@ -1,11 +1,14 @@
-package cc3002.tarea1.Pokemon;
+package cc3002.tarea1;
 
-import cc3002.tarea1.Attacks.IAttack;
-import cc3002.tarea1.Energies.IEnergy;
+import cc3002.tarea1.IAttack;
+import cc3002.tarea1.IEnergy;
+import cc3002.tarea1.IPokemon;
+
 import java.util.List;
 
 public abstract class AbstractPokemon implements IPokemon {
     private int id;
+
     private int hp;
     private int damageReceived;
     private IAttack selectedAttack;
@@ -49,6 +52,11 @@ public abstract class AbstractPokemon implements IPokemon {
     @Override
     public List<IEnergy> getEnergies() {
         return this.energyList;
+    }
+
+    @Override
+    public void playEffect(ITrainer trainer) {
+        trainer.addPokemonToBench(this);
     }
 
     @Override
