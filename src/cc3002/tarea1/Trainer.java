@@ -17,7 +17,7 @@ public class Trainer implements ITrainer {
     }
 
     @Override
-    public void seeHandCards() {
+    public void seeCards() {
 
     }
 
@@ -28,8 +28,13 @@ public class Trainer implements ITrainer {
     }
 
     @Override
+    public IPokemon getActivePokemon() {
+        return this.activePokemon;
+    }
+
+    @Override
     public void playCard(ICard card) {
-        card.playEffect();
+        card.playEffect(this);
 
     }
 
@@ -50,3 +55,4 @@ public class Trainer implements ITrainer {
         pokemon.getSelectedAttack();
     }
 }
+
