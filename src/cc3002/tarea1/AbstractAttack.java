@@ -8,10 +8,10 @@ import java.util.List;
 public abstract class AbstractAttack implements IAttack {
     private int damage;
     private String name;
-    private List<String> energies;
+    private int[] energies;
     private String description;
 
-    protected AbstractAttack(int damage, String name, List<String> energies, String description) {
+    protected AbstractAttack(int damage, String name, int[] energies, String description) {
         this.damage = damage;
         this.name = name;
         this.energies = energies;
@@ -29,7 +29,7 @@ public abstract class AbstractAttack implements IAttack {
     }
 
     @Override
-    public List<String> getEnergiesNeeded() {
+    public int[] getEnergiesNeeded() {
         return this.energies;
     }
 

@@ -5,7 +5,7 @@ import cc3002.tarea1.AbstractAttack;
 import java.util.List;
 
 public class DirectAttack extends AbstractAttack {
-    protected DirectAttack(int damage, String name, List<String> energies, String description) {
+    public DirectAttack(int damage, String name, int[] energies, String description) {
         super(damage, name, energies, description);
     }
 }

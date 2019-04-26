@@ -25,7 +25,7 @@ public interface IAttack {
      *
      * @return
      */
-    List<String> getEnergiesNeeded();
+    int[] getEnergiesNeeded();
 
     /**
      *
