@@ -3,6 +3,7 @@ package cc3002.tarea1;
 import cc3002.tarea1.IPokemon;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Interface to represent the attacks of the pokemon.
@@ -25,7 +26,7 @@ public interface IAttack {
      *
      * @return
      */
-    int[] getEnergiesNeeded();
+    Map<String, Integer> getEnergiesNeeded();
 
     /**
      *

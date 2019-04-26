@@ -5,6 +5,7 @@ import cc3002.tarea1.IEnergy;
 import cc3002.tarea1.IPokemon;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractPokemon implements IPokemon {
     private int id;
@@ -14,7 +15,7 @@ public abstract class AbstractPokemon implements IPokemon {
     private IAttack selectedAttack;
     private String name;
     private List<IAttack> attackList;
-    private List<IEnergy> energyList;
+    private Map<String, Integer> energyList;
 
     protected AbstractPokemon(int id, int hp, String name, List<IAttack> attackList) {
         this.id = id;
@@ -50,7 +51,7 @@ public abstract class AbstractPokemon implements IPokemon {
     }
 
     @Override
-    public List<IEnergy> getEnergies() {
+    public Map<String, Integer> getEnergies() {
         return this.energyList;
     }
 
@@ -72,6 +73,11 @@ public abstract class AbstractPokemon implements IPokemon {
     @Override
     public void selectAttack(int index) {
         this.selectedAttack = this.attackList.get(index);
+    }
+
+    @Override
+    public boolean hasEnergyForAttack() {
+        return selectedAttack.haveEnergy(this);
     }
 
     @Override

@@ -4,14 +4,15 @@ import cc3002.tarea1.IAttack;
 import cc3002.tarea1.IPokemon;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractAttack implements IAttack {
     private int damage;
     private String name;
-    private int[] energies;
+    private Map<String, Integer> energies;
     private String description;
 
-    protected AbstractAttack(int damage, String name, int[] energies, String description) {
+    protected AbstractAttack(int damage, String name, Map<String, Integer> energies, String description) {
         this.damage = damage;
         this.name = name;
         this.energies = energies;
@@ -29,7 +30,7 @@ public abstract class AbstractAttack implements IAttack {
     }
 
     @Override
-    public int[] getEnergiesNeeded() {
+    public Map<String, Integer> getEnergiesNeeded() {
         return this.energies;
     }
 
@@ -40,6 +41,21 @@ public abstract class AbstractAttack implements IAttack {
 
     @Override
     public boolean haveEnergy(IPokemon pokemon) {
+        if (pokemon.getEnergies().get("All") >= energies.get("All")) {
+            if (pokemon.getEnergies().get("Grass") >= energies.get("Grass")) {
+                if (pokemon.getEnergies().get("Fire") >= energies.get("Fire")) {
+                    if (pokemon.getEnergies().get("Water") >= energies.get("Water")) {
+                        if (pokemon.getEnergies().get("Psychic") >= energies.get("Psychic")) {
+                            if (pokemon.getEnergies().get("Fighting") >= energies.get("Fighting")) {
+                                if (pokemon.getEnergies().get("Lightning") >= energies.get("Lightning")) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         return false;
     }
 }
