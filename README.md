@@ -1,4 +1,4 @@
-#Pokemon TCG: Basic Elements
+# Pokemon TCG: Basic Elements
 
 This repository contains the basic elements of a Pokemon TCG clone, these include
 the cards, the pokemon, energies, attacks and a representation of the player (as a trainer).
