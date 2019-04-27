@@ -9,9 +9,10 @@ import java.util.List;
  */
 public interface ITrainer {
     /**
-     *
+     * getter for the trainer's name
+     * @return the trainer's name
      */
-    void seeCards();
+    String getName();
 
     /**
      * plays the card and its corresponding effect

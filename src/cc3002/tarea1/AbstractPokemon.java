@@ -22,10 +22,12 @@ public abstract class AbstractPokemon implements IPokemon {
         this.hp = hp;
         this.damageReceived = 0;
         this.name = name;
-        if (attackList.size() > 4) {
-            attackList = attackList.subList(0, 4);
+        if (attackList != null) {
+            if (attackList.size() > 4) {
+                attackList = attackList.subList(0, 4);
+            }
+            this.attackList = attackList;
         }
-        this.attackList = attackList;
     }
 
 
@@ -42,6 +44,11 @@ public abstract class AbstractPokemon implements IPokemon {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getReceivedDamage() {
+        return damageReceived;
     }
 
     @Override
@@ -65,7 +72,7 @@ public abstract class AbstractPokemon implements IPokemon {
     public void playEffect(ITrainer trainer) {
         if (trainer.getActivePokemon() == null) {
             trainer.selectActivePokemon(this);
-        } else if (trainer.getBenchPokemon().size() < 5) {
+        } else {
             trainer.addToBench(this);
         }
     }
@@ -91,9 +98,7 @@ public abstract class AbstractPokemon implements IPokemon {
     }
 
     @Override
-    public void attack(IPokemon opponent) {
-        opponent.receiveDamage(selectedAttack);
-    }
+    public abstract void attack(IPokemon opponent);
 
     @Override
     public void receiveDamage(IAttack attack) {

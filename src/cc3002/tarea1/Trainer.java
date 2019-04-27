@@ -27,11 +27,6 @@ public class Trainer implements ITrainer {
     }
 
     @Override
-    public void seeCards() {
-
-    }
-
-    @Override
     public List<ICard> getHand() {
         return hand;
     }
@@ -54,25 +49,33 @@ public class Trainer implements ITrainer {
     @Override
     public void replaceDeadPokemon() {
         if (activePokemon.isDead()) {
-            activePokemon = benchPokemon.get(0);
+            if (!benchPokemon.isEmpty()) {
+                activePokemon = benchPokemon.get(0);
+                benchPokemon.remove(0);
+            }
+            else
+                activePokemon = null;
         }
     }
 
     @Override
     public void addToBench(IPokemon pokemon) {
-        benchPokemon.add(pokemon);
+        if (benchPokemon.size() < 5)
+            benchPokemon.add(pokemon);
     }
 
     @Override
     public void selectActivePokemon(IPokemon pokemon) {
-        benchPokemon.add(activePokemon);
         activePokemon = pokemon;
         benchPokemon.remove(pokemon);
     }
 
     @Override
     public void selectAttack(int index) {
-        activePokemon.selectAttack(activePokemon.getAttacks().get(index));
+        if (index < activePokemon.getAttacks().size())
+            activePokemon.selectAttack(activePokemon.getAttacks().get(index));
+        else
+            activePokemon.selectAttack(null);
     }
 }
 

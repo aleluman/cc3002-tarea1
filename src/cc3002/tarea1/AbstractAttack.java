@@ -42,8 +42,10 @@ public abstract class AbstractAttack implements IAttack {
     @Override
     public boolean hasEnergy(IPokemon pokemon) {
         Map<String, Integer> energyList = pokemon.getEnergies();
+        if (energyList.isEmpty())
+            return false;
         for (String energy : energies.keySet()) {
-            if (energyList.get(energy) <= energies.get(energy))
+            if (energyList.get(energy) < energies.get(energy))
                 return false;
         }
         return true;

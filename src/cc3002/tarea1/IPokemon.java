@@ -31,6 +31,12 @@ public interface IPokemon extends ICard {
     String getName();
 
     /**
+     * getter for the received damage number
+     * @return the received damage
+     */
+    int getReceivedDamage();
+
+    /**
      * method to add an energy value to the pokemon
      *
      * @param energy an energy card
@@ -52,9 +58,7 @@ public interface IPokemon extends ICard {
      * @param trainer the owner of the card on which the effect will happen
      */
     @Override
-    default void playEffect(ITrainer trainer) {
-
-    }
+    void playEffect(ITrainer trainer);
 
     /**
      * method to get the energy values associated to the pokemon
