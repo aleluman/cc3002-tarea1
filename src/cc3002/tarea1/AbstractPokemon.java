@@ -1,9 +1,5 @@
 package cc3002.tarea1;
 
-import cc3002.tarea1.IAttack;
-import cc3002.tarea1.IEnergy;
-import cc3002.tarea1.IPokemon;
-
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +11,7 @@ public abstract class AbstractPokemon implements IPokemon {
     private IAttack selectedAttack;
     private String name;
     private List<IAttack> attackList;
-    private Map<String, Integer> energyList;
+    private Map<String, Integer> energies;
 
     protected AbstractPokemon(int id, int hp, String name, List<IAttack> attackList) {
         this.id = id;
@@ -25,34 +21,37 @@ public abstract class AbstractPokemon implements IPokemon {
         this.attackList = attackList;
     }
 
+
     @Override
     public int getID() {
-        return this.id;
+        return id;
     }
 
     @Override
     public int getHP() {
-        return this.hp;
+        return hp;
     }
 
     @Override
     public String getName() {
-        return this.name;
+        return name;
+    }
+
+    @Override
+    public boolean isDead() {
+        return (damageReceived >= hp);
     }
 
     @Override
     public void addEnergy(IEnergy energy) {
-        this.energyList.add(energy);
-    }
-
-    @Override
-    public void removeEnergy() {
-        this.energyList.remove(this.energyList.size() - 1);
+        String toAdd = energy.getName();
+        energies.merge(toAdd, 1, Integer::sum);
+        energies.merge("Any", 1, Integer::sum);
     }
 
     @Override
     public Map<String, Integer> getEnergies() {
-        return this.energyList;
+        return energies;
     }
 
     @Override
@@ -62,17 +61,17 @@ public abstract class AbstractPokemon implements IPokemon {
 
     @Override
     public IAttack getSelectedAttack() {
-        return this.selectedAttack;
+        return selectedAttack;
     }
 
     @Override
     public List<IAttack> getAttacks() {
-        return this.attackList;
+        return attackList;
     }
 
     @Override
     public void selectAttack(int index) {
-        this.selectedAttack = this.attackList.get(index);
+        selectedAttack = attackList.get(index);
     }
 
     @Override
@@ -82,17 +81,17 @@ public abstract class AbstractPokemon implements IPokemon {
 
     @Override
     public void attack(IPokemon opponent) {
-        opponent.receiveDamage(this.selectedAttack);
+        opponent.receiveDamage(selectedAttack);
     }
 
     @Override
     public void receiveDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage();
+        damageReceived += attack.getDamage();
     }
 
     @Override
     public void receiveWeaknessDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage() * 2;
+        damageReceived += attack.getDamage() * 2;
     }
 
     @Override
@@ -102,36 +101,36 @@ public abstract class AbstractPokemon implements IPokemon {
             effectiveDamage = 0;
         else
             effectiveDamage = attack.getDamage() - 30;
-        this.damageReceived += effectiveDamage;
+        damageReceived += effectiveDamage;
     }
 
     @Override
     public void receiveGrassDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage();
+        damageReceived += attack.getDamage();
     }
 
     @Override
     public void receiveWaterDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage();
+        damageReceived += attack.getDamage();
     }
 
     @Override
     public void receiveFireDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage();
+        damageReceived += attack.getDamage();
     }
 
     @Override
     public void receiveLightningDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage();
+        damageReceived += attack.getDamage();
     }
 
     @Override
     public void receivePsychicDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage();
+        damageReceived += attack.getDamage();
     }
 
     @Override
     public void receiveFightingDamage(IAttack attack) {
-        this.damageReceived += attack.getDamage();
+        damageReceived += attack.getDamage();
     }
 }

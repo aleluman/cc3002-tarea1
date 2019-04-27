@@ -6,10 +6,8 @@ import cc3002.tarea1.IPokemon;
 
 public abstract class AbstractEnergy implements IEnergy {
     private String name;
-    private int type;
 
-    protected AbstractEnergy(int type, String name) {
-        this.type = type;
+    protected AbstractEnergy(String name) {
         this.name = name;
     }
 
@@ -19,17 +17,12 @@ public abstract class AbstractEnergy implements IEnergy {
     }
 
     @Override
-    public int getType() {
-        return this.type;
-    }
-
-    @Override
     public String getName() {
-        return this.name;
+        return name;
     }
 
     @Override
     public void playEffect(ITrainer trainer) {
-        this.addToPokemon(trainer.getActivePokemon());
+        addToPokemon(trainer.getActivePokemon());
     }
 }

@@ -4,25 +4,17 @@ import java.util.List;
 
 public class Trainer implements ITrainer {
     private String name;
-    private List<ICard> deck;
     private List<ICard> hand;
     private List<IPokemon> benchPokemon;
     private IPokemon activePokemon;
 
-    protected Trainer(String name, List<ICard> deck) {
+    protected Trainer(String name) {
         this.name = name;
-        this.deck = deck;
     }
 
     @Override
     public void seeCards() {
 
-    }
-
-    @Override
-    public void drawCard() {
-        this.hand.add(this.deck.get(this.deck.size() - 1));
-        this.hand.remove(this.deck.size() - 1);
     }
 
     @Override
@@ -41,11 +33,6 @@ public class Trainer implements ITrainer {
         this.benchPokemon.add(this.activePokemon);
         this.activePokemon = pokemon;
         this.benchPokemon.remove(pokemon);
-    }
-
-    @Override
-    public void addPokemonToBench(IPokemon pokemon) {
-
     }
 
     @Override

@@ -33,9 +33,21 @@ public interface IPokemon extends ICard {
     void addEnergy(IEnergy energy);
 
     /**
-     * method to remove an energy value from the pokemon
+     * method to check if the current active pokemon is dead
+     * @return whether the pokemon is dead or not
      */
-    void removeEnergy();
+    boolean isDead();
+
+    /**
+     * executes the effect on the card when playing it. In this case, it adds the pokemon to
+     * the active pokemon field if it's not already occupied, or adds it to the bench if it isn't.
+     * If the bench already has 5 pokemon, it doesn't do anything.
+     * @param trainer the owner of the card on which the effect will happen
+     */
+    @Override
+    default void playEffect(ITrainer trainer) {
+
+    }
 
     /**
      * method to get the energy values associated to the pokemon

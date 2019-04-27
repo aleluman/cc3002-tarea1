@@ -21,41 +21,31 @@ public abstract class AbstractAttack implements IAttack {
 
     @Override
     public int getDamage() {
-        return this.damage;
+        return damage;
     }
 
     @Override
     public String getName() {
-        return this.name;
+        return name;
     }
 
     @Override
     public Map<String, Integer> getEnergiesNeeded() {
-        return this.energies;
+        return energies;
     }
 
     @Override
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     @Override
     public boolean haveEnergy(IPokemon pokemon) {
-        if (pokemon.getEnergies().get("All") >= energies.get("All")) {
-            if (pokemon.getEnergies().get("Grass") >= energies.get("Grass")) {
-                if (pokemon.getEnergies().get("Fire") >= energies.get("Fire")) {
-                    if (pokemon.getEnergies().get("Water") >= energies.get("Water")) {
-                        if (pokemon.getEnergies().get("Psychic") >= energies.get("Psychic")) {
-                            if (pokemon.getEnergies().get("Fighting") >= energies.get("Fighting")) {
-                                if (pokemon.getEnergies().get("Lightning") >= energies.get("Lightning")) {
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        Map<String, Integer> energyList = pokemon.getEnergies();
+        for (String energy : energies.keySet()) {
+            if (energyList.get(energy) <= energies.get(energy))
+                return false;
         }
-        return false;
+        return true;
     }
 }

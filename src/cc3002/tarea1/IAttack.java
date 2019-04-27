@@ -11,14 +11,14 @@ import java.util.Map;
  */
 public interface IAttack {
     /**
-     *
-     * @return
+     * getter for the damage of the attack
+     * @return the damage of the attack
      */
     int getDamage();
 
     /**
-     *
-     * @return
+     * getter for the name of the attack
+     * @return the name of the attack
      */
     String getName();
 

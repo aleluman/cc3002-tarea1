@@ -13,11 +13,6 @@ public interface ITrainer {
 
     /**
      *
-     */
-    void drawCard();
-
-    /**
-     *
      * @param card
      */
     void playCard(ICard card);
@@ -33,12 +28,6 @@ public interface ITrainer {
      * @return
      */
     IPokemon getActivePokemon();
-
-    /**
-     *
-     * @param pokemon
-     */
-    void addPokemonToBench(IPokemon pokemon);
 
     /**
      *
