@@ -1,5 +1,7 @@
 package cc3002.tarea1;
 
+import java.util.List;
+
 /**
  * Interface to represent the players of the game.
  *
@@ -31,7 +33,19 @@ public interface ITrainer {
 
     /**
      *
+     * @return
+     */
+    List<IPokemon> getBenchPokemon();
+
+    /**
+     *
+     * @param index
+     */
+    void selectAttack(int index);
+
+    /**
+     *
      * @param pokemon
      */
-    void selectAttack(IPokemon pokemon);
+    void addToBench(IPokemon pokemon);
 }

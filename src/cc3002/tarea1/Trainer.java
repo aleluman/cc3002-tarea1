@@ -1,15 +1,21 @@
 package cc3002.tarea1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Trainer implements ITrainer {
     private String name;
-    private List<ICard> hand;
-    private List<IPokemon> benchPokemon;
+    private List<ICard> hand = new ArrayList<>();
+    private List<IPokemon> benchPokemon = new ArrayList<>();
     private IPokemon activePokemon;
 
-    protected Trainer(String name) {
+    public Trainer(String name) {
         this.name = name;
+    }
+
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -19,25 +25,34 @@ public class Trainer implements ITrainer {
 
     @Override
     public IPokemon getActivePokemon() {
-        return this.activePokemon;
+        return activePokemon;
     }
 
     @Override
     public void playCard(ICard card) {
         card.playEffect(this);
+    }
 
+    @Override
+    public List<IPokemon> getBenchPokemon() {
+        return benchPokemon;
+    }
+
+    @Override
+    public void addToBench(IPokemon pokemon) {
+        benchPokemon.add(pokemon);
     }
 
     @Override
     public void selectActivePokemon(IPokemon pokemon) {
-        this.benchPokemon.add(this.activePokemon);
-        this.activePokemon = pokemon;
-        this.benchPokemon.remove(pokemon);
+        benchPokemon.add(activePokemon);
+        activePokemon = pokemon;
+        benchPokemon.remove(pokemon);
     }
 
     @Override
-    public void selectAttack(IPokemon pokemon) {
-        pokemon.getSelectedAttack();
+    public void selectAttack(int index) {
+        activePokemon.selectAttack(activePokemon.getAttacks().get(index));
     }
 }
 

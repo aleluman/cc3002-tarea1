@@ -1,9 +1,5 @@
 package cc3002.tarea1;
 
-import cc3002.tarea1.IAttack;
-import cc3002.tarea1.IPokemon;
-
-import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractAttack implements IAttack {
@@ -40,7 +36,7 @@ public abstract class AbstractAttack implements IAttack {
     }
 
     @Override
-    public boolean haveEnergy(IPokemon pokemon) {
+    public boolean hasEnergy(IPokemon pokemon) {
         Map<String, Integer> energyList = pokemon.getEnergies();
         for (String energy : energies.keySet()) {
             if (energyList.get(energy) <= energies.get(energy))

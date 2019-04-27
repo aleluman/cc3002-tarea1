@@ -1,17 +1,17 @@
 package cc3002.tarea1;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractPokemon implements IPokemon {
     private int id;
-
     private int hp;
     private int damageReceived;
     private IAttack selectedAttack;
     private String name;
     private List<IAttack> attackList;
-    private Map<String, Integer> energies;
+    private Map<String, Integer> energies = new HashMap<>();
 
     protected AbstractPokemon(int id, int hp, String name, List<IAttack> attackList) {
         this.id = id;
@@ -56,7 +56,11 @@ public abstract class AbstractPokemon implements IPokemon {
 
     @Override
     public void playEffect(ITrainer trainer) {
-        trainer.addPokemonToBench(this);
+        if (trainer.getActivePokemon() == null) {
+            trainer.selectActivePokemon(this);
+        } else if (trainer.getBenchPokemon().size() < 5) {
+            trainer.addToBench(this);
+        }
     }
 
     @Override
@@ -70,13 +74,13 @@ public abstract class AbstractPokemon implements IPokemon {
     }
 
     @Override
-    public void selectAttack(int index) {
-        selectedAttack = attackList.get(index);
+    public void selectAttack(IAttack attack) {
+        selectedAttack = attack;
     }
 
     @Override
     public boolean hasEnergyForAttack() {
-        return selectedAttack.haveEnergy(this);
+        return selectedAttack.hasEnergy(this);
     }
 
     @Override

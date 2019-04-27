@@ -1,9 +1,5 @@
 package cc3002.tarea1;
 
-import cc3002.tarea1.IEnergy;
-import cc3002.tarea1.ITrainer;
-import cc3002.tarea1.IPokemon;
-
 public abstract class AbstractEnergy implements IEnergy {
     private String name;
 

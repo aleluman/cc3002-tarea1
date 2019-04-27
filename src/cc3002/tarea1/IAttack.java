@@ -38,5 +38,5 @@ public interface IAttack {
      * @param pokemon
      * @return true if the pokemon has enough energies, false otherwise.
      */
-    boolean haveEnergy(IPokemon pokemon);
+    boolean hasEnergy(IPokemon pokemon);
 }
