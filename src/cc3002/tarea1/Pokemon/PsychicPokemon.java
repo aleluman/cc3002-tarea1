@@ -13,17 +13,17 @@ public class PsychicPokemon extends AbstractPokemon {
 
     @Override
     public void attack(IPokemon opponent) {
-        opponent.receivePsychicDamage(this.getSelectedAttack());
+        opponent.receivePsychicDamage(getSelectedAttack());
     }
 
     @Override
     public void receivePsychicDamage(IAttack attack) {
-        this.receiveWeaknessDamage(attack);
+        receiveWeaknessDamage(attack);
     }
 
     @Override
     public void receiveFightingDamage(IAttack attack) {
-        this.receiveResistedDamage(attack);
+        receiveResistedDamage(attack);
     }
 
 }

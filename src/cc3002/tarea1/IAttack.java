@@ -1,8 +1,5 @@
 package cc3002.tarea1;
 
-import cc3002.tarea1.IPokemon;
-
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,21 +20,23 @@ public interface IAttack {
     String getName();
 
     /**
-     *
-     * @return
+     * returns a map containing the energies needed for the attack.
+     * the map has the type of the energy as key and the quantity of that type
+     * of energy as value.
+     * @return map containing the type of energy and the quantity needed for the attack.
      */
     Map<String, Integer> getEnergiesNeeded();
 
     /**
-     *
-     * @return
+     * getter for the description of the attack
+     * @return the description of the attack
      */
     String getDescription();
 
     /**
-     *
+     * method to check if the pokemon has enough energies for the attack.
      * @param pokemon
-     * @return
+     * @return true if the pokemon has enough energies, false otherwise.
      */
     boolean haveEnergy(IPokemon pokemon);
 }

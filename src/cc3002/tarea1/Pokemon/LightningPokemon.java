@@ -13,11 +13,11 @@ public class LightningPokemon extends AbstractPokemon {
 
     @Override
     public void attack(IPokemon opponent) {
-        opponent.receiveLightningDamage(this.getSelectedAttack());
+        opponent.receiveLightningDamage(getSelectedAttack());
     }
 
     @Override
     public void receiveFightingDamage(IAttack attack) {
-        this.receiveWeaknessDamage(attack);
+        receiveWeaknessDamage(attack);
     }
 }

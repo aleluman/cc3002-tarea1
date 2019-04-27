@@ -13,22 +13,22 @@ public class WaterPokemon extends AbstractPokemon {
 
     @Override
     public void attack(IPokemon opponent) {
-        opponent.receiveWaterDamage(this.getSelectedAttack());
+        opponent.receiveWaterDamage(getSelectedAttack());
     }
 
     @Override
     public void receiveGrassDamage(IAttack attack) {
-        this.receiveWeaknessDamage(attack);
+        receiveWeaknessDamage(attack);
     }
 
     @Override
     public void receiveLightningDamage(IAttack attack) {
-        this.receiveWeaknessDamage(attack);
+        receiveWeaknessDamage(attack);
     }
 
     @Override
     public void receiveFightingDamage(IAttack attack) {
-        this.receiveResistedDamage(attack);
+        receiveResistedDamage(attack);
     }
 
 }

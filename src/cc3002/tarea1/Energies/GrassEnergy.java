@@ -4,6 +4,6 @@ import cc3002.tarea1.AbstractEnergy;
 
 public class GrassEnergy extends AbstractEnergy {
     public GrassEnergy(String name){
-        super(1, name);
+        super(name);
     }
 }

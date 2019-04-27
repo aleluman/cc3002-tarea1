@@ -4,6 +4,6 @@ import cc3002.tarea1.AbstractEnergy;
 
 public class PsychicEnergy extends AbstractEnergy {
     public PsychicEnergy(String name){
-        super(5, name);
+        super(name);
     }
 }

@@ -13,11 +13,11 @@ public class FirePokemon extends AbstractPokemon {
 
     @Override
     public void attack(IPokemon opponent) {
-        opponent.receiveFireDamage(this.getSelectedAttack());
+        opponent.receiveFireDamage(getSelectedAttack());
     }
 
     @Override
     public void receiveWaterDamage(IAttack attack) {
-        this.receiveWeaknessDamage(attack);
+        receiveWeaknessDamage(attack);
     }
 }

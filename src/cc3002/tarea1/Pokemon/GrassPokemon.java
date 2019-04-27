@@ -13,17 +13,17 @@ public class GrassPokemon extends AbstractPokemon {
 
     @Override
     public void attack(IPokemon opponent) {
-        opponent.receiveGrassDamage(this.getSelectedAttack());
+        opponent.receiveGrassDamage(getSelectedAttack());
     }
 
     @Override
     public void receiveFireDamage(IAttack attack) {
-        this.receiveWeaknessDamage(attack);
+        receiveWeaknessDamage(attack);
     }
 
     @Override
     public void receiveWaterDamage(IAttack attack) {
-        this.receiveResistedDamage(attack);
+        receiveResistedDamage(attack);
     }
 
 

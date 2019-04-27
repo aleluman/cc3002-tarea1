@@ -4,6 +4,6 @@ import cc3002.tarea1.AbstractEnergy;
 
 public class FightingEnergy extends AbstractEnergy {
     public FightingEnergy(String name){
-        super(6, name);
+        super(name);
     }
 }
