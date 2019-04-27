@@ -2,8 +2,15 @@ package cc3002.tarea1.Energies;
 
 import cc3002.tarea1.AbstractEnergy;
 
+/**
+ * Class to represent a grass type energy.
+ * @author Alejandro Lumán Bahamondes
+ */
 public class GrassEnergy extends AbstractEnergy {
-    public GrassEnergy(String name){
-        super(name);
+    /**
+     * creates a new grass energy card
+     */
+    public GrassEnergy(){
+        super("Grass");
     }
 }

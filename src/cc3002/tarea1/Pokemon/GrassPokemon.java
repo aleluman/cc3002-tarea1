@@ -6,7 +6,18 @@ import cc3002.tarea1.IPokemon;
 
 import java.util.List;
 
+/**
+ * Class to represent a Grass type pokemon.
+ * @author Alejandro Lumán Bahamondes
+ */
 public class GrassPokemon extends AbstractPokemon {
+    /**
+     * Creates a new grass type pokemon.
+     * @param id pokedex number of the pokemon
+     * @param hp hit points of the pokemon
+     * @param name name of the pokemon
+     * @param attackList a list with up to 4 attacks
+     */
     public GrassPokemon(int id, int hp, String name, List<IAttack> attackList) {
         super(id, hp, name, attackList);
     }

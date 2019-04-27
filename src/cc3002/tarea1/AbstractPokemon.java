@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class to represent an abstract pokemon (with no type)
+ * @author Alejandro Lumán Bahamondes
+ */
 public abstract class AbstractPokemon implements IPokemon {
     private int id;
     private int hp;
@@ -18,6 +22,9 @@ public abstract class AbstractPokemon implements IPokemon {
         this.hp = hp;
         this.damageReceived = 0;
         this.name = name;
+        if (attackList.size() > 4) {
+            attackList = attackList.subList(0, 4);
+        }
         this.attackList = attackList;
     }
 

@@ -2,6 +2,10 @@ package cc3002.tarea1;
 
 import java.util.Map;
 
+/**
+ * Class to represent an arbitrary attack
+ * @author Alejandro Lumán Bahamondes
+ */
 public abstract class AbstractAttack implements IAttack {
     private int damage;
     private String name;

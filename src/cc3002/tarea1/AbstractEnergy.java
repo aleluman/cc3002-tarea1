@@ -1,5 +1,9 @@
 package cc3002.tarea1;
 
+/**
+ * Class to represent an arbitrary energy card
+ * @author Alejandro Lumán Bahamondes
+ */
 public abstract class AbstractEnergy implements IEnergy {
     private String name;
 

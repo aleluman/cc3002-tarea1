@@ -3,12 +3,20 @@ package cc3002.tarea1;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class to implement the trainer interface
+ * @author Alejandro Lumán Bahamondes
+ */
 public class Trainer implements ITrainer {
     private String name;
     private List<ICard> hand = new ArrayList<>();
     private List<IPokemon> benchPokemon = new ArrayList<>();
     private IPokemon activePokemon;
 
+    /**
+     * method to create a new trainer
+     * @param name the name of the trainer
+     */
     public Trainer(String name) {
         this.name = name;
     }
@@ -24,6 +32,11 @@ public class Trainer implements ITrainer {
     }
 
     @Override
+    public List<ICard> getHand() {
+        return hand;
+    }
+
+    @Override
     public IPokemon getActivePokemon() {
         return activePokemon;
     }
@@ -36,6 +49,13 @@ public class Trainer implements ITrainer {
     @Override
     public List<IPokemon> getBenchPokemon() {
         return benchPokemon;
+    }
+
+    @Override
+    public void replaceDeadPokemon() {
+        if (activePokemon.isDead()) {
+            activePokemon = benchPokemon.get(0);
+        }
     }
 
     @Override
