@@ -43,4 +43,64 @@ public class FirePokemonTest {
         trainer = new Trainer("Alejandro");
         energy = new GrassEnergy() ;
     }
+
+    @Test
+    public void constructorTest() {
+        assertEquals(257, blaziken.getID());
+        assertEquals(120, blaziken.getHP());
+        assertEquals("Blaziken", blaziken.getName());
+        assertEquals("Struggle", blaziken.getAttacks().get(0).getName());
+        List<IAttack> attackList = new ArrayList<>();
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        blaziken = new GrassPokemon(257, 120, "Blaziken", attackList);
+        assertEquals(4, blaziken.getAttacks().size());
+        attackList.add(testAttack);
+        blaziken = new GrassPokemon(257, 120, "Blaziken", attackList);
+        assertEquals(4, blaziken.getAttacks().size());
+    }
+
+    @Test
+    public void isDeadTest() {
+        assertFalse(blaziken.isDead());
+        swampert.selectAttack(testAttack);
+        swampert.attack(blaziken);
+        assertFalse(blaziken.isDead());
+        swampert.attack(blaziken);
+        assertTrue(blaziken.isDead());
+    }
+
+    @Test
+    public void hasEnergyForAttackTest() {
+        blaziken.selectAttack(testAttack);
+        assertFalse(blaziken.hasEnergyForAttack());
+        energy.addToPokemon(blaziken);
+        assertFalse(blaziken.hasEnergyForAttack());
+        energy.addToPokemon(blaziken);
+        assertTrue(blaziken.hasEnergyForAttack());
+    }
+
+    @Test
+    public void attackAndDamageTest() {
+        sceptile.selectAttack(testAttack);
+        alakazam.selectAttack(testAttack);
+        raikou.selectAttack(testAttack);
+        blaziken.selectAttack(testAttack);
+        garchomp.selectAttack(testAttack);
+        swampert.selectAttack(testAttack);
+        sceptile.attack(blaziken);
+        assertEquals(50, blaziken.getReceivedDamage());
+        alakazam.attack(blaziken);
+        assertEquals(100, blaziken.getReceivedDamage());
+        raikou.attack(blaziken);
+        assertEquals(150, blaziken.getReceivedDamage());
+        blaziken.attack(blaziken);
+        assertEquals(200, blaziken.getReceivedDamage());
+        garchomp.attack(blaziken);
+        assertEquals(250, blaziken.getReceivedDamage());
+        swampert.attack(blaziken);
+        assertEquals(350, blaziken.getReceivedDamage());
+    }
 }

@@ -43,4 +43,68 @@ public class PsychicPokemonTest {
         trainer = new Trainer("Alejandro");
         energy = new GrassEnergy() ;
     }
+
+    @Test
+    public void constructorTest() {
+        assertEquals(65, alakazam.getID());
+        assertEquals(110, alakazam.getHP());
+        assertEquals("Alakazam", alakazam.getName());
+        assertEquals("Struggle", alakazam.getAttacks().get(0).getName());
+        List<IAttack> attackList = new ArrayList<>();
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        alakazam = new GrassPokemon(254, 110, "Alakazam", attackList);
+        assertEquals(4, alakazam.getAttacks().size());
+        attackList.add(testAttack);
+        alakazam = new GrassPokemon(254, 110, "Alakazam", attackList);
+        assertEquals(4, alakazam.getAttacks().size());
+    }
+
+    @Test
+    public void isDeadTest() {
+        assertFalse(alakazam.isDead());
+        alakazam.selectAttack(testAttack);
+        alakazam.attack(alakazam);
+        assertFalse(alakazam.isDead());
+        alakazam.attack(alakazam);
+        assertTrue(alakazam.isDead());
+    }
+
+    @Test
+    public void hasEnergyForAttackTest() {
+        alakazam.selectAttack(testAttack);
+        assertFalse(alakazam.hasEnergyForAttack());
+        energy.addToPokemon(alakazam);
+        assertFalse(alakazam.hasEnergyForAttack());
+        energy.addToPokemon(alakazam);
+        assertTrue(alakazam.hasEnergyForAttack());
+    }
+
+    @Test
+    public void attackAndDamageTest() {
+        sceptile.selectAttack(testAttack);
+        alakazam.selectAttack(testAttack);
+        raikou.selectAttack(testAttack);
+        blaziken.selectAttack(testAttack);
+        garchomp.selectAttack(testAttack);
+        swampert.selectAttack(testAttack);
+        sceptile.attack(alakazam);
+        assertEquals(50, alakazam.getReceivedDamage());
+        alakazam.attack(alakazam);
+        assertEquals(150, alakazam.getReceivedDamage());
+        raikou.attack(alakazam);
+        assertEquals(200, alakazam.getReceivedDamage());
+        blaziken.attack(alakazam);
+        assertEquals(250, alakazam.getReceivedDamage());
+        garchomp.attack(alakazam);
+        assertEquals(270, alakazam.getReceivedDamage());
+        swampert.attack(alakazam);
+        assertEquals(320, alakazam.getReceivedDamage());
+        testAttack = new DirectAttack(20, "Struggle", null, "Test attack");
+        garchomp.selectAttack(testAttack);
+        garchomp.attack(alakazam);
+        assertEquals(320, alakazam.getReceivedDamage());
+    }
 }

@@ -43,4 +43,68 @@ public class WaterPokemonTest {
         trainer = new Trainer("Alejandro");
         energy = new GrassEnergy() ;
     }
+
+    @Test
+    public void constructorTest() {
+        assertEquals(260, swampert.getID());
+        assertEquals(120, swampert.getHP());
+        assertEquals("Swampert", swampert.getName());
+        assertEquals("Struggle", swampert.getAttacks().get(0).getName());
+        List<IAttack> attackList = new ArrayList<>();
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        attackList.add(testAttack);
+        swampert = new GrassPokemon(260, 120, "Swampert", attackList);
+        assertEquals(4, swampert.getAttacks().size());
+        attackList.add(testAttack);
+        swampert = new GrassPokemon(260, 120, "Swampert", attackList);
+        assertEquals(4, swampert.getAttacks().size());
+    }
+
+    @Test
+    public void isDeadTest() {
+        assertFalse(swampert.isDead());
+        raikou.selectAttack(testAttack);
+        raikou.attack(swampert);
+        assertFalse(swampert.isDead());
+        raikou.attack(swampert);
+        assertTrue(swampert.isDead());
+    }
+
+    @Test
+    public void hasEnergyForAttackTest() {
+        swampert.selectAttack(testAttack);
+        assertFalse(swampert.hasEnergyForAttack());
+        energy.addToPokemon(swampert);
+        assertFalse(swampert.hasEnergyForAttack());
+        energy.addToPokemon(swampert);
+        assertTrue(swampert.hasEnergyForAttack());
+    }
+
+    @Test
+    public void attackAndDamageTest() {
+        sceptile.selectAttack(testAttack);
+        alakazam.selectAttack(testAttack);
+        raikou.selectAttack(testAttack);
+        blaziken.selectAttack(testAttack);
+        garchomp.selectAttack(testAttack);
+        swampert.selectAttack(testAttack);
+        sceptile.attack(swampert);
+        assertEquals(100, swampert.getReceivedDamage());
+        alakazam.attack(swampert);
+        assertEquals(150, swampert.getReceivedDamage());
+        raikou.attack(swampert);
+        assertEquals(250, swampert.getReceivedDamage());
+        blaziken.attack(swampert);
+        assertEquals(300, swampert.getReceivedDamage());
+        garchomp.attack(swampert);
+        assertEquals(320, swampert.getReceivedDamage());
+        swampert.attack(swampert);
+        assertEquals(370, swampert.getReceivedDamage());
+        testAttack = new DirectAttack(20, "Struggle", null, "Test attack");
+        garchomp.selectAttack(testAttack);
+        garchomp.attack(swampert);
+        assertEquals(370, swampert.getReceivedDamage());
+    }
 }
