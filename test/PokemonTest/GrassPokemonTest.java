@@ -19,7 +19,6 @@ public class GrassPokemonTest {
             garchomp,
             swampert;
     private IAttack testAttack;
-    private ITrainer trainer;
     private IEnergy energy;
 
 
@@ -40,7 +39,6 @@ public class GrassPokemonTest {
                 new ArrayList<>(Collections.singleton(testAttack)));
         swampert = new WaterPokemon(260, 120, "Swampert",
                 new ArrayList<>(Collections.singleton(testAttack)));
-        trainer = new Trainer("Alejandro");
         energy = new GrassEnergy() ;
     }
 
