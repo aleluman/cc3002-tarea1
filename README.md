@@ -32,5 +32,5 @@ The third test makes sure a pokemon has enough energy to perform and attack. The
 and resistances of a pokemon and contains implicit calls to the methods of AbstractPokemon
 making use of double dispatch instead of asking for the pokemon type.
 
-##UML Diagram of the Package
+## UML Diagram of the Package
 ![](uml.png)
