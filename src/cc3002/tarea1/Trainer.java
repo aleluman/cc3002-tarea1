@@ -10,6 +10,9 @@ import java.util.List;
 public class Trainer implements ITrainer {
     private String name;
     private List<ICard> hand = new ArrayList<>();
+    private List<ICard> deck = new ArrayList<>();
+    private List<ICard> discardPile = new ArrayList<>();
+    private List<ICard> prizeCards = new ArrayList<>();
     private List<IPokemon> benchPokemon = new ArrayList<>();
     private IPokemon activePokemon;
 
@@ -29,6 +32,11 @@ public class Trainer implements ITrainer {
     @Override
     public List<ICard> getHand() {
         return hand;
+    }
+
+    @Override
+    public List<ICard> getDeck() {
+        return deck;
     }
 
     @Override

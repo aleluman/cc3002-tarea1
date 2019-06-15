@@ -39,6 +39,12 @@ public interface ITrainer {
     List<ICard> getHand();
 
     /**
+     * getter for the deck of cards
+     * @return  list with the cards in the trainer's deck
+     */
+    List<ICard> getDeck();
+
+    /**
      * getter for the list of pokemon in the bench
      * @return a list of pokemon in the bench, the maximum should be 5
      */
