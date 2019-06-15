@@ -1,5 +1,7 @@
 package cc3002.tarea1;
 
+import cc3002.tarea1.Visitors.Visitor;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,8 @@ public abstract class AbstractPokemon implements IPokemon {
     private String name;
     private List<IAttack> attackList;
     private Map<String, Integer> energies = new HashMap<>();
+    private ITrainer trainer;
+
 
     protected AbstractPokemon(int id, int hp, String name, List<IAttack> attackList) {
         this.id = id;
@@ -148,5 +152,10 @@ public abstract class AbstractPokemon implements IPokemon {
     @Override
     public void receiveFightingDamage(IAttack attack) {
         damageReceived += attack.getDamage();
+    }
+
+    @Override
+    public void accept(Visitor v) {
+        v.visitPokemon(this);
     }
 }

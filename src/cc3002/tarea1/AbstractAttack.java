@@ -1,5 +1,7 @@
 package cc3002.tarea1;
 
+import cc3002.tarea1.Visitors.Visitor;
+
 import java.util.Map;
 
 /**
@@ -49,5 +51,10 @@ public abstract class AbstractAttack implements IAttack {
                 return false;
         }
         return true;
+    }
+
+    @Override
+    public void accept(Visitor v) {
+        v.visitAttack(this);
     }
 }

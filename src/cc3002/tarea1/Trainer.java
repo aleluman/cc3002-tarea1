@@ -1,5 +1,7 @@
 package cc3002.tarea1;
 
+import cc3002.tarea1.Visitors.Visitor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Trainer implements ITrainer {
     private List<ICard> prizeCards = new ArrayList<>();
     private List<IPokemon> benchPokemon = new ArrayList<>();
     private IPokemon activePokemon;
+    private IPokemon selectedPokemon;
 
     /**
      * method to create a new trainer
@@ -41,6 +44,11 @@ public class Trainer implements ITrainer {
 
     @Override
     public IPokemon getActivePokemon() {
+        return activePokemon;
+    }
+
+    @Override
+    public IPokemon getSelectedPokemon() {
         return activePokemon;
     }
 
@@ -84,6 +92,11 @@ public class Trainer implements ITrainer {
             activePokemon.selectAttack(activePokemon.getAttacks().get(index));
         else
             activePokemon.selectAttack(null);
+    }
+
+    @Override
+    public void accept(Visitor v) {
+        v.visitTrainer(this);
     }
 }
 

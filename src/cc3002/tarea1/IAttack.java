@@ -1,5 +1,7 @@
 package cc3002.tarea1;
 
+import cc3002.tarea1.Visitors.Visitor;
+
 import java.util.Map;
 
 /**
@@ -39,4 +41,10 @@ public interface IAttack {
      * @return true if the pokemon has enough energies, false otherwise.
      */
     boolean hasEnergy(IPokemon pokemon);
+
+    /**
+     * Accept method for the different visitors
+     * @param v visitor to perform an operation
+     */
+    void accept(Visitor v);
 }

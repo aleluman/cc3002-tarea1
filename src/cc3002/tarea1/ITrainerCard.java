@@ -1,4 +1,4 @@
 package cc3002.tarea1;
 
-public interface ITrainerCard {
+public interface ITrainerCard extends ICard{
 }

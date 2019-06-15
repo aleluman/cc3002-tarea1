@@ -1,5 +1,7 @@
 package cc3002.tarea1;
 
+import cc3002.tarea1.Visitors.Visitor;
+
 /**
  * Interface to represent Energies (cost of the attacks of a pokemon).
  * @author Alejandro Lumán Bahamondes

@@ -1,5 +1,7 @@
 package cc3002.tarea1;
 
+import cc3002.tarea1.Visitors.Visitor;
+
 import java.util.List;
 
 /**
@@ -31,6 +33,12 @@ public interface ITrainer {
      * @return the current active pokemon
      */
     IPokemon getActivePokemon();
+
+    /**
+     * getter for the current selected pokemon
+     * @return the current selected pokemon
+     */
+    IPokemon getSelectedPokemon();
 
     /**
      * getter for the hand of cards
@@ -66,4 +74,10 @@ public interface ITrainer {
      * @param pokemon pokemon to be added to the bench
      */
     void addToBench(IPokemon pokemon);
+
+    /**
+     * Accept method for the different visitors
+     * @param v visitor to perform an operation
+     */
+    void accept(Visitor v);
 }
