@@ -1,6 +1,10 @@
-package cc3002.tarea1;
+package cc3002.tarea1.Pokemon;
 
-import cc3002.tarea1.Visitors.Visitor;
+import cc3002.tarea1.Attacks.IAttack;
+import cc3002.tarea1.Energies.IEnergy;
+import cc3002.tarea1.ITrainer;
+import cc3002.tarea1.TrainerCards.ITrainerCard;
+import cc3002.tarea1.Visitors.CardVisitor;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +23,10 @@ public abstract class AbstractPokemon implements IPokemon {
     private List<IAttack> attackList;
     private Map<String, Integer> energies = new HashMap<>();
     private ITrainer trainer;
+    private int stage;
+    private int evolutionID;
+    private ITrainerCard attachedobject;
+    private IAttack ability;
 
 
     protected AbstractPokemon(int id, int hp, String name, List<IAttack> attackList) {
@@ -56,6 +64,11 @@ public abstract class AbstractPokemon implements IPokemon {
     }
 
     @Override
+    public int getStage() {
+        return stage;
+    }
+
+    @Override
     public boolean isDead() {
         return (damageReceived >= hp);
     }
@@ -70,15 +83,6 @@ public abstract class AbstractPokemon implements IPokemon {
     @Override
     public Map<String, Integer> getEnergies() {
         return energies;
-    }
-
-    @Override
-    public void playEffect(ITrainer trainer) {
-        if (trainer.getActivePokemon() == null) {
-            trainer.selectActivePokemon(this);
-        } else {
-            trainer.addToBench(this);
-        }
     }
 
     @Override
@@ -155,7 +159,37 @@ public abstract class AbstractPokemon implements IPokemon {
     }
 
     @Override
-    public void accept(Visitor v) {
+    public int getEvolutionID() {
+        return evolutionID;
+    }
+
+    @Override
+    public ITrainer getTrainer() {
+        return trainer;
+    }
+
+    @Override
+    public void setObject(ITrainerCard object) {
+        attachedobject = object;
+    }
+
+    @Override
+    public ITrainerCard getObject() {
+        return attachedobject;
+    }
+
+    @Override
+    public void accept(CardVisitor v) {
         v.visitPokemon(this);
+    }
+
+    @Override
+    public void setReceivedDamage(int damage){
+        damageReceived = damage;
+    }
+
+    @Override
+    public IAttack getAbility() {
+        return ability;
     }
 }

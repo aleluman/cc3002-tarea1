@@ -1,6 +1,7 @@
 package cc3002.tarea1;
 
-import cc3002.tarea1.Visitors.Visitor;
+import cc3002.tarea1.Pokemon.IPokemon;
+import cc3002.tarea1.Visitors.CardVisitor;
 
 import java.util.List;
 
@@ -15,12 +16,6 @@ public interface ITrainer {
      * @return the trainer's name
      */
     String getName();
-
-    /**
-     * plays the card and its corresponding effect
-     * @param card the card being played
-     */
-    void playCard(ICard card);
 
     /**
      * method to select a pokemon to become the active pokemon
@@ -76,8 +71,39 @@ public interface ITrainer {
     void addToBench(IPokemon pokemon);
 
     /**
-     * Accept method for the different visitors
-     * @param v visitor to perform an operation
+     * method to add a card to the trainer's hand
+     * @param card the card to be added to the hand
      */
-    void accept(Visitor v);
+    void addToHand(ICard card);
+
+    /**
+     * method to get the selected card from the trainer's hand
+     * @return the selected card
+     */
+    ICard getSelectedCard();
+
+    /**
+     * method to set the selected card from the trainer's hand
+     * @param index the index of the selected card from the list of cards
+     */
+    void setSelectedCard(int index);
+
+    /**
+     * method to set the selected pokemon from the trainer's bench
+     * @param pokemon the selected pokemon from the bench
+     */
+    void setSelectedPokemon(IPokemon pokemon);
+
+    /**
+     * method to move a card to the discard pile
+     * @param card the card to be moved
+     * @param cardList the list of cards to remove the card from
+     */
+    void moveToDiscardPile(List<ICard> cardList, ICard card);
+
+    /**
+     * method to add a card to the discard pile
+     * @param card card to be added to the discard pile
+     */
+    void addToDiscardPile(ICard card);
 }

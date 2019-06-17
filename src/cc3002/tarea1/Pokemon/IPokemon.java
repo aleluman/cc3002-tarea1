@@ -1,4 +1,10 @@
-package cc3002.tarea1;
+package cc3002.tarea1.Pokemon;
+
+import cc3002.tarea1.Attacks.IAttack;
+import cc3002.tarea1.Energies.IEnergy;
+import cc3002.tarea1.ICard;
+import cc3002.tarea1.ITrainer;
+import cc3002.tarea1.TrainerCards.ITrainerCard;
 
 import java.util.List;
 import java.util.Map;
@@ -44,21 +50,17 @@ public interface IPokemon extends ICard {
     void addEnergy(IEnergy energy);
 
     /**
+     * method to return the evolution stage of the pokemon
+     * @return the evolution stage of the pokemon
+     */
+    int getStage();
+
+    /**
      * method to check if the current active pokemon is dead
      *
      * @return whether the pokemon is dead or not
      */
     boolean isDead();
-
-    /**
-     * executes the effect on the card when playing it. In this case, it adds the pokemon to
-     * the active pokemon field if it's not already occupied, or adds it to the bench if it isn't.
-     * If the bench already has 5 pokemon, it doesn't do anything.
-     *
-     * @param trainer the owner of the card on which the effect will happen
-     */
-    @Override
-    void playEffect(ITrainer trainer);
 
     /**
      * method to get the energy values associated to the pokemon
@@ -164,4 +166,39 @@ public interface IPokemon extends ICard {
      * @param attack attack from where the damage is applied
      */
     void receiveFightingDamage(IAttack attack);
+
+    /**
+     * method to get the ID of the pokemon evolution, if it exists
+     * @return the ID of the evolution of the pokemon
+     */
+    int getEvolutionID();
+
+    /**
+     * method to get the owner of the card
+     * @return the owner of the card (trainer)
+     */
+    ITrainer getTrainer();
+
+    /**
+     * method to set a trainer object card attached to the pokemon
+     */
+    void setObject(ITrainerCard object);
+
+    /**
+     * method to get the pokemon attached object
+     * @return the attached object
+     */
+    ITrainerCard getObject();
+
+    /**
+     * setter method for the received damage of the pokemon
+     * @param damage damage received
+     */
+    void setReceivedDamage(int damage);
+
+    /**
+     * method to get the pokemon's ability if it has one
+     * @return the pokemon's ability
+     */
+    IAttack getAbility();
 }

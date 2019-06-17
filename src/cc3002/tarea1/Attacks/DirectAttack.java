@@ -1,6 +1,8 @@
 package cc3002.tarea1.Attacks;
 
-import cc3002.tarea1.AbstractAttack;
+import cc3002.tarea1.Visitors.AttackVisitor;
+import cc3002.tarea1.Visitors.IAttackVisitor;
+
 import java.util.Map;
 
 /**
@@ -18,4 +20,11 @@ public class DirectAttack extends AbstractAttack {
     public DirectAttack(int damage, String name, Map<String, Integer> energies, String description) {
         super(damage, name, energies, description);
     }
+
+    @Override
+    public void accept(IAttackVisitor v) {
+        v.visitDirectAttack(this);
+    }
+
+
 }

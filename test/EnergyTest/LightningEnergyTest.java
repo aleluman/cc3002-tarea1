@@ -1,8 +1,8 @@
 package EnergyTest;
 
 import cc3002.tarea1.Energies.LightningEnergy;
-import cc3002.tarea1.IEnergy;
-import cc3002.tarea1.IPokemon;
+import cc3002.tarea1.Energies.IEnergy;
+import cc3002.tarea1.Pokemon.IPokemon;
 import cc3002.tarea1.ITrainer;
 import cc3002.tarea1.Pokemon.GrassPokemon;
 import cc3002.tarea1.Trainer;

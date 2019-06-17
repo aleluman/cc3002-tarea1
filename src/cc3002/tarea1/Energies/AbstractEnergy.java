@@ -1,6 +1,8 @@
-package cc3002.tarea1;
+package cc3002.tarea1.Energies;
 
-import cc3002.tarea1.Visitors.Visitor;
+import cc3002.tarea1.Pokemon.IPokemon;
+import cc3002.tarea1.ITrainer;
+import cc3002.tarea1.Visitors.CardVisitor;
 
 /**
  * Class to represent an arbitrary energy card
@@ -8,6 +10,7 @@ import cc3002.tarea1.Visitors.Visitor;
  */
 public abstract class AbstractEnergy implements IEnergy {
     private String name;
+    private ITrainer trainer;
 
     protected AbstractEnergy(String name) {
         this.name = name;
@@ -24,12 +27,12 @@ public abstract class AbstractEnergy implements IEnergy {
     }
 
     @Override
-    public void playEffect(ITrainer trainer) {
-        addToPokemon(trainer.getActivePokemon());
+    public void accept(CardVisitor v) {
+        v.visitEnergy(this);
     }
 
     @Override
-    public void accept(Visitor v) {
-        v.visitEnergy(this);
+    public ITrainer getTrainer() {
+        return trainer;
     }
 }

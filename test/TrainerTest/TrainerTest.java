@@ -2,6 +2,7 @@ package TrainerTest;
 
 import cc3002.tarea1.*;
 import cc3002.tarea1.Attacks.DirectAttack;
+import cc3002.tarea1.Attacks.IAttack;
 import cc3002.tarea1.Energies.GrassEnergy;
 import cc3002.tarea1.Pokemon.*;
 import org.junit.Before;

@@ -1,6 +1,7 @@
 package cc3002.tarea1;
 
-import cc3002.tarea1.Visitors.Visitor;
+import cc3002.tarea1.Pokemon.IPokemon;
+import cc3002.tarea1.Visitors.CardVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Trainer implements ITrainer {
     private List<IPokemon> benchPokemon = new ArrayList<>();
     private IPokemon activePokemon;
     private IPokemon selectedPokemon;
+    private ICard selectedCard;
 
     /**
      * method to create a new trainer
@@ -50,11 +52,6 @@ public class Trainer implements ITrainer {
     @Override
     public IPokemon getSelectedPokemon() {
         return activePokemon;
-    }
-
-    @Override
-    public void playCard(ICard card) {
-        card.playEffect(this);
     }
 
     @Override
@@ -95,8 +92,36 @@ public class Trainer implements ITrainer {
     }
 
     @Override
-    public void accept(Visitor v) {
-        v.visitTrainer(this);
+    public void addToHand(ICard card) {
+        hand.add(card);
+    }
+
+    @Override
+    public ICard getSelectedCard() {
+        return selectedCard;
+    }
+
+    @Override
+    public void setSelectedCard(int index) {
+        selectedCard = getHand().get(index);
+    }
+
+    @Override
+    public void setSelectedPokemon(IPokemon pokemon) {
+        selectedPokemon = pokemon;
+    }
+
+    @Override
+    public void moveToDiscardPile(List<ICard> cardList, ICard card) {
+        if (cardList.contains(card)){
+            cardList.remove(card);
+            addToDiscardPile(card);
+        }
+    }
+
+    @Override
+    public void addToDiscardPile(ICard card) {
+        discardPile.add(card);
     }
 }
 

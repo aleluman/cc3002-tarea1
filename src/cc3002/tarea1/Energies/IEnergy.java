@@ -1,6 +1,8 @@
-package cc3002.tarea1;
+package cc3002.tarea1.Energies;
 
-import cc3002.tarea1.Visitors.Visitor;
+import cc3002.tarea1.ICard;
+import cc3002.tarea1.Pokemon.IPokemon;
+import cc3002.tarea1.ITrainer;
 
 /**
  * Interface to represent Energies (cost of the attacks of a pokemon).
@@ -18,11 +20,4 @@ public interface IEnergy extends ICard {
      * @return string with the name of the card
      */
     String getName();
-
-    /**
-     * method to execute the effect of the card when it's played, in this
-     * case, add energy to a pokemon
-     * @param trainer the owner of the card on which the effect will happen
-     */
-    void playEffect(ITrainer trainer);
 }

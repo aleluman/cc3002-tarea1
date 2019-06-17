@@ -1,8 +1,6 @@
 package cc3002.tarea1.Pokemon;
 
-import cc3002.tarea1.AbstractPokemon;
-import cc3002.tarea1.IAttack;
-import cc3002.tarea1.IPokemon;
+import cc3002.tarea1.Attacks.IAttack;
 
 import java.util.List;
 
