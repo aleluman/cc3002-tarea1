@@ -18,7 +18,7 @@ import java.util.Map;
 public class TrainerTest {
     private ITrainer trainer1, trainer2;
     private Controller controller;
-    private ICard sceptile,
+    private IPokemon sceptile,
             alakazam,
             raikou,
             blaziken,
@@ -39,7 +39,8 @@ public class TrainerTest {
         garchomp = new FightingPokemon(445, 140, "Garchomp", null, 2, trainer1, 0, null);
         swampert = new WaterPokemon(260, 120, "Swampert", null, 2, trainer1, 0, null);
         pikachu = new LightningPokemon(25, 60, "Pikachu", null, 2, trainer1, 0, null);
-        grassEnergyCard = new GrassEnergy();
+        grassEnergyCard = new GrassEnergy(trainer1);
+        trainer1.selectActivePokemon(sceptile);
     }
 
     @Test
@@ -47,52 +48,20 @@ public class TrainerTest {
         assertEquals("Alejandro", trainer1.getName());
         assertTrue(trainer1.getHand().isEmpty());
         assertTrue(trainer1.getBenchPokemon().isEmpty());
-        assertNull(trainer1.getActivePokemon());
-    }
-
-    @Test
-    public void playCardTest() {
-        controller.selectCard(sceptile);
-        controller.playCard();
-        assertEquals("Sceptile", trainer1.getActivePokemon().getName());
-        assertEquals(0, trainer1.getBenchPokemon().size());
-        controller.selectCard(alakazam);
-        controller.playCard();
-        assertEquals("Sceptile", trainer1.getActivePokemon().getName());
-        controller.selectCard(raikou);
-        controller.playCard();
-        assertEquals(2, trainer1.getBenchPokemon().size());
-        controller.selectCard(blaziken);
-        controller.playCard();
-        assertEquals(3, trainer1.getBenchPokemon().size());
-        controller.selectCard(garchomp);
-        controller.playCard();
-        assertEquals(4, trainer1.getBenchPokemon().size());
-        controller.selectCard(swampert);
-        controller.playCard();
-        assertEquals(5, trainer1.getBenchPokemon().size());
-        controller.selectCard(pikachu);
-        controller.playCard();
-        assertEquals(5, trainer1.getBenchPokemon().size());
-        controller.selectCard(grassEnergyCard);
-        controller.playCard();
-        Map<String, Integer> energies = new HashMap<>();
-        energies.put("Grass", 1);
-        energies.put("Any", 1);
-        assertEquals(energies, trainer1.getActivePokemon().getEnergies());
+        assertNotNull(trainer1.getActivePokemon());
     }
 
     @Test
     public void addToBenchTest() {
         assertEquals(0, trainer1.getBenchPokemon().size());
-        trainer1.addToBench((IPokemon) sceptile);
+        trainer1.addToBench(sceptile);
         assertEquals(1, trainer1.getBenchPokemon().size());
-        trainer1.addToBench((IPokemon) alakazam);
-        trainer1.addToBench((IPokemon) raikou);
-        trainer1.addToBench((IPokemon) blaziken);
-        trainer1.addToBench((IPokemon) garchomp);
+        trainer1.addToBench(alakazam);
+        trainer1.addToBench(raikou);
+        trainer1.addToBench(blaziken);
+        trainer1.addToBench(garchomp);
         assertEquals(5, trainer1.getBenchPokemon().size());
-        trainer1.addToBench((IPokemon) swampert);
+        trainer1.addToBench(swampert);
         assertEquals(5, trainer1.getBenchPokemon().size());
         assertEquals("Garchomp", trainer1.getBenchPokemon().get(4).getName());
     }
@@ -108,16 +77,6 @@ public class TrainerTest {
         trainer1.getActivePokemon().receiveDamage(attack);
         trainer1.replaceDeadPokemon();
         assertNull(trainer1.getActivePokemon());
-        controller.selectCard(alakazam);
-        controller.playCard();
-        controller.selectCard(raikou);
-        controller.playCard();
-        assertEquals("Alakazam", trainer1.getActivePokemon().getName());
-        trainer1.getActivePokemon().receiveDamage(attack);
-        trainer1.getActivePokemon().receiveDamage(attack);
-        trainer1.replaceDeadPokemon();
-        assertEquals("Raikou", trainer1.getActivePokemon().getName());
-        assertEquals(0, trainer1.getBenchPokemon().size());
     }
 
     @Test
@@ -128,6 +87,7 @@ public class TrainerTest {
         attackList.add(attack1);
         attackList.add(attack2);
         sceptile = new GrassPokemon(254, 120, "Sceptile", attackList, 2, trainer1, 0, null);
+        trainer1.selectActivePokemon(sceptile);
         controller.selectCard(sceptile);
         controller.playCard();
         assertNull(trainer1.getActivePokemon().getSelectedAttack());
