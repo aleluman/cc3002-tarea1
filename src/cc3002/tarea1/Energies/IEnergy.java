@@ -2,7 +2,6 @@ package cc3002.tarea1.Energies;
 
 import cc3002.tarea1.ICard;
 import cc3002.tarea1.Pokemon.IPokemon;
-import cc3002.tarea1.ITrainer;
 
 /**
  * Interface to represent Energies (cost of the attacks of a pokemon).

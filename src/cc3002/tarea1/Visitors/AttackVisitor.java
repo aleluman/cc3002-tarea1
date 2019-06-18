@@ -1,18 +1,26 @@
 package cc3002.tarea1.Visitors;
 
-import cc3002.tarea1.Attacks.Ability;
-import cc3002.tarea1.Attacks.DirectAttack;
-import cc3002.tarea1.Energies.IEnergy;
-import cc3002.tarea1.Pokemon.IPokemon;
+import cc3002.tarea1.Attacks.FireSpin;
+import cc3002.tarea1.Attacks.WingBuzz;
 
+/**
+ * class to implement the IAttackVisitor methods
+ * @author Alejandro Lumán Bahamondes
+ */
 public class AttackVisitor implements IAttackVisitor{
+    /**
+     * method to define the behavior of the wing buzz ability
+     */
     @Override
-    public void visitDirectAttack(DirectAttack attack) {
+    public void visitWingBuzz(WingBuzz ability) {
 
     }
 
+    /**
+     * method to define the behavior of the fire spin attack
+     */
     @Override
-    public void visitAbility(Ability ability) {
+    public void visitFireSpin(FireSpin attack) {
 
     }
 }

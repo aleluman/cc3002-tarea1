@@ -1,7 +1,6 @@
 package cc3002.tarea1;
 
 import cc3002.tarea1.Pokemon.IPokemon;
-import cc3002.tarea1.Visitors.CardVisitor;
 
 import java.util.List;
 
