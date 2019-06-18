@@ -20,11 +20,12 @@ public class PsychicEnergyTest {
 
     @Before
     public void setUp() {
-        psychicEnergy = new PsychicEnergy();
-        sceptile = new GrassPokemon(254, 120, "Sceptile", null, 0, trainer1, 0, null);
         trainer1 = new Trainer("Alejandro");
         trainer2 = new Trainer("Lumán");
+        psychicEnergy = new PsychicEnergy(trainer1);
         controller = new Controller(trainer1, trainer2);
+        sceptile = new GrassPokemon(254, 120, "Sceptile", null, 0, trainer1, 0, null);
+        trainer1.selectActivePokemon(sceptile);
     }
 
     @Test

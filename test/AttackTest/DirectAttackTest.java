@@ -46,8 +46,8 @@ public class DirectAttackTest {
         attackList.add(attack2);
         attackList.add(attack3);
         sceptile = new GrassPokemon(254, 120, "Sceptile", attackList, 2, trainer, 0, null);
-        grassEnergy = new GrassEnergy();
-        waterEnergy = new WaterEnergy();
+        grassEnergy = new GrassEnergy(trainer);
+        waterEnergy = new WaterEnergy(trainer);
     }
 
     @Test

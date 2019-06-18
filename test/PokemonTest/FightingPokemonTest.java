@@ -44,7 +44,7 @@ public class FightingPokemonTest {
                 new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
         swampert = new WaterPokemon(260, 120, "Swampert",
                 new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
-        energy = new GrassEnergy() ;
+        energy = new GrassEnergy(trainer) ;
     }
 
     @Test

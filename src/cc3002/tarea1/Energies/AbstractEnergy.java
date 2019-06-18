@@ -12,8 +12,9 @@ public abstract class AbstractEnergy implements IEnergy {
     private String name;
     private ITrainer trainer;
 
-    protected AbstractEnergy(String name) {
+    protected AbstractEnergy(String name, ITrainer trainer) {
         this.name = name;
+        this.trainer = trainer;
     }
 
     @Override
