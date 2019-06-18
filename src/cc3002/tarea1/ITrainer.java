@@ -82,10 +82,10 @@ public interface ITrainer {
     ICard getSelectedCard();
 
     /**
-     * method to set the selected card from the trainer's hand
-     * @param index the index of the selected card from the list of cards
+     * method to set the selected card
+     * @param card the selected card from the list of cards
      */
-    void setSelectedCard(int index);
+    void setSelectedCard(ICard card);
 
     /**
      * method to set the selected pokemon from the trainer's bench

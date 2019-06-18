@@ -28,12 +28,27 @@ public abstract class AbstractPokemon implements IPokemon {
     private ITrainerCard attachedobject;
     private IAttack ability;
 
-
-    protected AbstractPokemon(int id, int hp, String name, List<IAttack> attackList) {
+    /**
+     * constructor for a generic pokemon
+     * @param id pokedex number of the pokemon
+     * @param hp hit points of the pokemon
+     * @param name name of the pokemon
+     * @param attackList a list with up to 4 attacks
+     * @param stage the stage of the pokemon evolution
+     * @param trainer the pokemon's owner
+     * @param evolutionID the pokemon's evolutionID
+     * @param ability the pokemon's ability
+     */
+    protected AbstractPokemon(int id, int hp, String name, List<IAttack> attackList, int stage, ITrainer trainer,
+                              int evolutionID, IAttack ability) {
         this.id = id;
         this.hp = hp;
         this.damageReceived = 0;
         this.name = name;
+        this.stage = stage;
+        this.trainer = trainer;
+        this.evolutionID = evolutionID;
+        this.ability = ability;
         if (attackList != null) {
             if (attackList.size() > 4) {
                 attackList = attackList.subList(0, 4);

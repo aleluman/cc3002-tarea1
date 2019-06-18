@@ -102,8 +102,8 @@ public class Trainer implements ITrainer {
     }
 
     @Override
-    public void setSelectedCard(int index) {
-        selectedCard = getHand().get(index);
+    public void setSelectedCard(ICard card) {
+        selectedCard = card;
     }
 
     @Override

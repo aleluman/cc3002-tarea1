@@ -1,9 +1,9 @@
 package cc3002.tarea1;
 
-import cc3002.tarea1.Visitors.CardVisitor;
 
 /**
  * Interface to represent a controller for the game that allows two trainers to play
+ *
  * @author Alejandro Lumán Bahamondes
  */
 public interface IController {
@@ -18,10 +18,11 @@ public interface IController {
     void playCard();
 
     /**
-     * method to select the card to be played
-     * @param index index of the card on the hand
+     * method to select a card to perform an operation
+     *
+     * @param card the card to be selected
      */
-    void selectCard(int index);
+    void selectCard(ICard card);
 
     /**
      * method to use the ability of the current active pokemon of the active trainer
@@ -37,4 +38,10 @@ public interface IController {
      * method to end the current player's turn
      */
     void endPlayerTurn();
+
+    /**
+     * method to get the current active trainer
+     * @return the active trainer
+     */
+    ITrainer getActiveTrainer();
 }

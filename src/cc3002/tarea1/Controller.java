@@ -38,8 +38,8 @@ public class Controller implements IController {
     }
 
     @Override
-    public void selectCard(int index) {
-        activeTrainer.setSelectedCard(index);
+    public void selectCard(ICard card) {
+        activeTrainer.setSelectedCard(card);
     }
 
     @Override
@@ -65,5 +65,10 @@ public class Controller implements IController {
     public void endPlayerTurn() {
         energyPlayedThisTurn = false;
         switchActiveTrainer();
+    }
+
+    @Override
+    public ITrainer getActiveTrainer() {
+        return activeTrainer;
     }
 }

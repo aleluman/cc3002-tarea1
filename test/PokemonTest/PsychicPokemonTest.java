@@ -6,7 +6,9 @@ import cc3002.tarea1.Attacks.DirectAttack;
 import cc3002.tarea1.Attacks.IAttack;
 import cc3002.tarea1.Energies.GrassEnergy;
 import cc3002.tarea1.Energies.IEnergy;
+import cc3002.tarea1.ITrainer;
 import cc3002.tarea1.Pokemon.*;
+import cc3002.tarea1.Trainer;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -21,25 +23,26 @@ public class PsychicPokemonTest {
             swampert;
     private IAttack testAttack;
     private IEnergy energy;
-
+    private ITrainer trainer;
 
     @Before
     public void setUp() {
+        trainer = new Trainer("Alejandro");
         Map<String, Integer> cost = new HashMap<>();
         cost.put("Any", 2);
         testAttack = new DirectAttack(50, "Struggle", cost, "Test attack");
         sceptile = new GrassPokemon(254, 120, "Sceptile",
-                new ArrayList<>(Collections.singleton(testAttack)));
+                new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
         alakazam = new PsychicPokemon(65, 110, "Alakazam",
-                new ArrayList<>(Collections.singleton(testAttack)));
+                new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
         raikou = new LightningPokemon(243, 150, "Raikou",
-                new ArrayList<>(Collections.singleton(testAttack)));
+                new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
         blaziken = new FirePokemon(257, 120, "Blaziken",
-                new ArrayList<>(Collections.singleton(testAttack)));
+                new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
         garchomp = new FightingPokemon(445, 140, "Garchomp",
-                new ArrayList<>(Collections.singleton(testAttack)));
+                new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
         swampert = new WaterPokemon(260, 120, "Swampert",
-                new ArrayList<>(Collections.singleton(testAttack)));
+                new ArrayList<>(Collections.singleton(testAttack)), 2, trainer, 0, null);
         energy = new GrassEnergy() ;
     }
 
@@ -54,10 +57,10 @@ public class PsychicPokemonTest {
         attackList.add(testAttack);
         attackList.add(testAttack);
         attackList.add(testAttack);
-        alakazam = new GrassPokemon(254, 110, "Alakazam", attackList);
+        alakazam = new GrassPokemon(254, 110, "Alakazam", attackList, 2, trainer, 0, null);
         assertEquals(4, alakazam.getAttacks().size());
         attackList.add(testAttack);
-        alakazam = new GrassPokemon(254, 110, "Alakazam", attackList);
+        alakazam = new GrassPokemon(254, 110, "Alakazam", attackList, 2, trainer, 0, null);
         assertEquals(4, alakazam.getAttacks().size());
     }
 

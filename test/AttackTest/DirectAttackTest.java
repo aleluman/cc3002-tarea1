@@ -5,8 +5,10 @@ import cc3002.tarea1.Energies.GrassEnergy;
 import cc3002.tarea1.Energies.WaterEnergy;
 import cc3002.tarea1.Attacks.IAttack;
 import cc3002.tarea1.Energies.IEnergy;
+import cc3002.tarea1.ITrainer;
 import cc3002.tarea1.Pokemon.IPokemon;
 import cc3002.tarea1.Pokemon.GrassPokemon;
+import cc3002.tarea1.Trainer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,9 +26,11 @@ public class DirectAttackTest {
     private IPokemon sceptile;
     private IEnergy grassEnergy,
             waterEnergy;
+    private ITrainer trainer;
 
     @Before
     public void setUp() {
+        trainer = new Trainer("Alejandro");
         Map<String, Integer> cost1 = new HashMap<>();
         cost1.put("Grass", 2);
         attack1 = new DirectAttack(50, "Leaf Blade", cost1, "Grass Attack");
@@ -41,7 +45,7 @@ public class DirectAttackTest {
         attackList.add(attack1);
         attackList.add(attack2);
         attackList.add(attack3);
-        sceptile = new GrassPokemon(254, 120, "Sceptile", attackList);
+        sceptile = new GrassPokemon(254, 120, "Sceptile", attackList, 2, trainer, 0, null);
         grassEnergy = new GrassEnergy();
         waterEnergy = new WaterEnergy();
     }
