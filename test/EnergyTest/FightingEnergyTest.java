@@ -25,6 +25,7 @@ public class FightingEnergyTest {
         trainer1 = new Trainer("Alejandro");
         trainer2 = new Trainer("Lumán");
         controller = new Controller(trainer1, trainer2);
+        trainer1.selectActivePokemon(sceptile);
 
     }
 
@@ -47,8 +48,6 @@ public class FightingEnergyTest {
 
     @Test
     public void playEffectTest() {
-        trainer1.setSelectedPokemon(sceptile);
-        trainer1.selectActivePokemon(sceptile);
         controller.selectCard(sceptile);
         controller.playCard();
         assertTrue(controller.getActiveTrainer().getActivePokemon().getEnergies().isEmpty());
