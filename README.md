@@ -13,6 +13,9 @@ the ICard interface has common methods for both IPokemon and IEnergy, considerin
 Most of the interactions between the different entities described before where implemented using double dispatch as it works great
 with the weakness/resistance system of Pokemon.
 
+The Visitor pattern was used to implement the different effects of the cards being played, as well as dealing with the 
+effects of attacks and abilities. The controller class is similar to the adapter pattern.
+
 ## How to Run
 The code was made in Java 8 with the JUnit 4 FrameWork, and should be able to run on any machine with a jvm version 8 or above.
 
